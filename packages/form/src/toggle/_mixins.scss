@@ -278,7 +278,7 @@
   }
 
   &::after {
-    @include rmd-elevation(1);
+    @include rmd-elevation(1, true);
 
     background-color: darken($rmd-white-base, 5%);
     border-radius: inherit;
