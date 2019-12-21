@@ -16,6 +16,19 @@ $rmd-theme-no-css-variables-fallback: true !default;
 /// @type Boolean
 $rmd-theme-define-colors-with-rgba: false !default;
 
+/// Boolean if the dark theme should gain different background colors based on the current elevation instead of a static surface
+/// color.
+/// @type Boolean
+$rmd-theme-dark-elevation: true !default;
+
+/// The class name that gets applied to the root `<html>` element if your app switches between dark and light themes. This is
+/// really only used for the changing the background color based on elevation when the app is in dark mode and the
+/// `$rmd-theme-dark-elevation` boolean is enabled.
+///
+/// If this is set to `prefers-color-scheme`, the dark elevation styles will only be applied when the `@media (prefers-color-scheme: dark)`.
+/// @type String
+$rmd-theme-dark-class: 'dark-theme' !default;
+
 /// Boolean if the light theme **default** colors should be used. This means that the
 /// background-color, surface, and text colors will be updated to their light theme defaults.
 /// Setting this to `false`, will use their dark theme defaults.
@@ -111,9 +124,9 @@ $rmd-theme-light-surface: #fff !default;
 
 /// The dark theme's background color.
 /// @type Color
-$rmd-theme-dark-background: #303030 !default;
+$rmd-theme-dark-background: #121212 !default;
 
-/// The dark theme's surface color.
+/// The dark theme's surface color. If the `rmd-theme-dark-elevation` variable is enabled, this value won't really be used.
 /// @type Color
 $rmd-theme-dark-surface: $rmd-grey-800 !default;
 
@@ -348,6 +361,37 @@ $rmd-theme-disabled-text-on-dark-color: rmd-theme-text-color(disabled, dark) !de
 /// @type Color
 /// @see rmd-theme-text-color
 $rmd-theme-icon-on-dark-color: rmd-theme-text-color(icon, dark) !default;
+
+///
+/// @type Map
+/// @access private
+$rmd-theme-dark-colors: (
+  0: $rmd-theme-dark-background,
+  1: #1f1f1f,
+  2: #242424,
+  3: #262626,
+  4: #282828,
+  5: #282828,
+  6: #2c2c2c,
+  7: #2c2c2c,
+  8: #2f2f2f,
+  9: #2f2f2f,
+  10: #2f2f2f,
+  11: #2f2f2f,
+  12: #333,
+  13: #333,
+  14: #333,
+  15: #333,
+  16: #353535,
+  17: #353535,
+  18: #353535,
+  19: #353535,
+  20: #353535,
+  21: #353535,
+  22: #353535,
+  23: #353535,
+  24: #383838,
+);
 
 /// A Map of all the theme values that can be used throughout the app. This is mainly created
 /// so that the specific `rmd-theme--NAME` classes can be created, but also for the `rmd-theme` function

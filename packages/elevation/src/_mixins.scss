@@ -2,7 +2,7 @@
 /// @group elevation
 ////
 
-@import '~@react-md/theme/dist/functions';
+@import '~@react-md/theme/dist/mixins';
 @import '~@react-md/transition/dist/mixins';
 @import '~@react-md/utils/dist/mixins';
 @import './functions';
@@ -20,11 +20,31 @@
 /// }
 ///
 /// @param {Number} z-value - This should be a number between 0 and 24.
-/// @param {Color} color [rmd-elevation-color] - The color to use for the box-shadow.
-/// @param {Number} opacity-boost [0] - The amount to boost the default opacity levels for the
-///   three box-shadows applied.
-@mixin rmd-elevation($z-value, $color: $rmd-elevation-color, $opacity-boost: 0) {
-  box-shadow: rmd-elevation($z-value, $color, $opacity-boost);
+/// @param {Boolean} no-dark-theme [false] - Boolean if the dark theme surface colors should not be set.
+/// This should normally be applied to fixed elements that content scrolls under.
+/// @param {String} dark-elevation-selector [rmd-theme-dark-class]
+@mixin rmd-elevation(
+  $z-value,
+  $no-dark-theme: false,
+  $dark-elevation-selector: $rmd-theme-dark-class
+) {
+  @if $rmd-theme-dark-elevation and $rmd-theme-dark-class and not $no-dark-theme {
+    @if $rmd-theme-dark-class == 'prefers-color-scheme' {
+      @media (prefers-color-scheme: dark) {
+        & {
+          @include rmd-theme-update-var(background, map-get($rmd-theme-dark-colors, $z-value));
+          @include rmd-theme(background-color, background);
+        }
+      }
+    } @else {
+      #{'.' + $rmd-theme-dark-class} & {
+        @include rmd-theme-update-var(background, map-get($rmd-theme-dark-colors, $z-value));
+        @include rmd-theme(background-color, background);
+      }
+    }
+  }
+
+  box-shadow: rmd-elevation($z-value, $rmd-elevation-color, 0);
 }
 
 /// This mixin is used to create performant box-shadow transitions between different elevations. What

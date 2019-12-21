@@ -71,7 +71,7 @@
   }
 
   &--fixed-elevation {
-    @include rmd-elevation($rmd-app-bar-fixed-elevation);
+    @include rmd-elevation($rmd-app-bar-fixed-elevation, true);
   }
 
   $positions: top right bottom left;
