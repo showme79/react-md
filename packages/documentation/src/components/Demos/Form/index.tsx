@@ -45,6 +45,9 @@ import {
 import SimpleHelpAndErrorMessages from "./SimpleHelpAndErrorMessages";
 import simpleHelpAndErrorMessages from "./SimpleHelpAndErrorMessages.md";
 
+import SimpleTextFieldValidation from "./SimpleTextFieldValidation";
+import simpleTextFieldValidation from "./SimpleTextFieldValidation.md";
+
 import ExampleForm from "./ExampleForm";
 import exampleForm from "./ExampleForm.md";
 
@@ -113,6 +116,11 @@ const demos = [
     name: "Simple Help and Error Messages",
     description: simpleHelpAndErrorMessages,
     children: <SimpleHelpAndErrorMessages />,
+  },
+  {
+    name: "Simple Text Field Validation",
+    description: simpleTextFieldValidation,
+    children: <SimpleTextFieldValidation />,
   },
   {
     name: "Example Form",

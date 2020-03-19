@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import cn from "classnames";
 import {
   Checkbox,
@@ -12,15 +12,12 @@ import useNumberField from "hooks/useNumberField";
 
 import "./Grid.scss";
 import "./SimpleGridList.scss";
+import NumberField from "components/NumberField";
 
 const block = bem("simple-grid-list");
 
 const SimpleGridList: FC = () => {
-  const [cells, cellsProps] = useNumberField({
-    defaultValue: 20,
-    min: 0,
-    max: 120,
-  });
+  const [cells, setCells] = useState(20);
   const [maxCellSize, maxCellSizeProps] = useNumberField({
     defaultValue: 150,
     min: 120,
@@ -44,10 +41,11 @@ const SimpleGridList: FC = () => {
     <>
       <Fieldset legend="GridList options">
         <Grid minCellWidth="9rem">
-          <TextField
+          <NumberField
             id="simple-grid-list-cell-count"
+            defaultValue={20}
+            onNumberChange={nextCells => setCells(nextCells)}
             label="Number of cells"
-            {...cellsProps}
           />
           <TextField
             id="simple-grid-list-cell-size"

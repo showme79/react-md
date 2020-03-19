@@ -15,3 +15,24 @@ export * from "./TextArea";
 
 export { default as FormMessage } from "./FormMessage";
 export * from "./FormMessage";
+
+export {
+  default as useValidity,
+  TextFieldValidityOptions,
+  TextFieldValidityHandlers,
+  GetErrorMessage,
+  GetErrorIcon,
+  ValidityOptions,
+  ProvidedTextFieldValidityProps,
+  ValidityMessageProps,
+  ValidityMessageCounterProps,
+  ValidityReturnValue,
+  ErrorChangeHandler,
+} from "./useValidity";
+
+export {
+  default as useNumberValidity,
+  CurrentNumber,
+  NumberValidityOptions,
+  NumberValidityReturnValue,
+} from "./useNumberValidity";
