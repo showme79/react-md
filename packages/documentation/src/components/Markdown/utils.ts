@@ -123,6 +123,8 @@ renderer.list = (body, ordered) => {
   return `<${tag} class="${styles.list}">${body}</${tag}>`;
 };
 
+renderer.hr = () => '<hr class="rmd-divider">';
+
 // ///////////////////////////////////////////////////
 // MARKDOWN TRANSFORMATIONS
 
